@@ -4,7 +4,7 @@
   <subtitle><![CDATA[开源节流——探讨心理学常识，共享前端头脑风暴]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-07-01T01:28:13.141Z</updated>
+  <updated>2014-07-07T13:02:35.805Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,235 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[《白帽子讲Web安全》读书笔记]]></title>
+    <link href="http://yoursite.com/2014/07/07/%E3%80%8A%E7%99%BD%E5%B8%BD%E5%AD%90%E8%AE%B2web%E5%AE%89%E5%85%A8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2014/07/07/《白帽子讲web安全》读书笔记/</id>
+    <published>2014-07-07T13:01:12.000Z</published>
+    <updated>2014-07-07T13:02:27.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="以下是关于《白帽子讲Web安全》读书笔记">以下是关于《白帽子讲Web安全》读书笔记</h1>
+<h1 id="《白帽子讲Web安全》读书笔记">《白帽子讲Web安全》读书笔记</h1>
+<ul>
+<li>吴翰清 著</li>
+</ul>
+<h2 id="1-_安全世界观">1. 安全世界观</h2>
+<ol>
+<li>白帽子，是指精通安全技术，但是工作在反黑客领域的专家们；</li>
+<li>黑帽子，是指利用黑客技术造成破坏，深知进行网络犯罪的群体。</li>
+<li>SQL注入的出现是Web安全史上的一个里程碑。(1999)</li>
+<li>XSS是另一个里程碑。(2003)</li>
+<li>安全问题的本质是信任问题。</li>
+<li>假设安全的前提条件是可信任的。</li>
+<li>安全三要素(CIA)：<ul>
+<li>机密性Confidentially<ul>
+<li>加密</li>
+</ul>
+</li>
+<li>完整性Integrity<ul>
+<li>数字签名</li>
+</ul>
+</li>
+<li>可用性Availability<ul>
+<li>随需而得</li>
+<li>拒绝服务攻击DoS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全评估<ul>
+<li>资产等级划分<ul>
+<li>互联网安全的核心问题，是数据安全的问题。</li>
+</ul>
+</li>
+<li>威胁分析<ul>
+<li>找准信任基础</li>
+</ul>
+</li>
+<li>风险分析<ul>
+<li>DREAD模型，判断一个威胁的风险程度</li>
+</ul>
+</li>
+<li>确认解决方案(设计安全方案)<ul>
+<li>能够有效解决问题</li>
+<li>用户体验好</li>
+<li>高性能</li>
+<li>低耦合</li>
+<li>易于扩展与升级</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全原则<ul>
+<li>Secure By Default原则——时刻牢记<ul>
+<li>黑名单、白名单</li>
+<li>最小权限原则</li>
+</ul>
+</li>
+<li>纵深防御原则——更全面、更正确地看待问题<ul>
+<li>各个不同层面、不同方面实施安全方案</li>
+<li>在正确的地方做正确的事       </li>
+</ul>
+</li>
+<li>数据与代码分离原则——从漏洞成因上看问题<ul>
+<li>注入<ul>
+<li><code>&lt;script&gt;$var&lt;/script&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不可预测性原则——从客服攻击方法的角度看问题<ul>
+<li>有效抵御基于篡改、伪造的攻击</li>
+<li>加密算法、随机数算法、哈希算法</li>
+<li>用token防御CSRF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全是一门平衡的艺术</li>
+</ol>
+<h2 id="2-客户端脚本安全">2.客户端脚本安全</h2>
+<h3 id="(1)_浏览器安全">(1) 浏览器安全</h3>
+<ol>
+<li>同源策略Same Origin Policy<ul>
+<li>浏览器同源策略限制了来自不同源的<code>document</code>或脚本对当前<code>document</code>读取或设置某些属性</li>
+<li>影响”源”的因素：host(根域名)、子域名、端口、协议</li>
+<li>DOM、Cookie、XMLHttpRequest(不能跨域访问资源)、第三方插件(Flash(crossdomain.xml)、Java Applet、Silverlight、Google Gears)受同源策略的限制</li>
+<li>script、img、iframe、link通过src加载资源(GET请求)，限制js读写权限，对返回内容不能读、写</li>
+<li>IE 8 CSS 跨域漏洞</li>
+</ul>
+</li>
+<li>浏览器沙箱<ul>
+<li>单进程 or 多进程浏览器</li>
+</ul>
+</li>
+<li>恶意网址拦截<ul>
+<li>基于黑名单，如PhishTank、Google SafeBrowsing API、EVSSL证书</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>XSS Filter</li>
+</ul>
+</li>
+</ol>
+<h3 id="(2)_跨站点脚本攻击(XSS)">(2) 跨站点脚本攻击(XSS)</h3>
+<ol>
+<li>Cross Site Script，不一定跨域</li>
+<li>HTML注入</li>
+<li>XSS 分类<ul>
+<li>反射型XSS<ul>
+<li>简单把用户输入反射给浏览器，诱使用户点击恶意链接——非持久型XSS</li>
+</ul>
+</li>
+<li>存储型XSS<ul>
+<li>被保存到服务器端——持久型XSS</li>
+</ul>
+</li>
+<li>基于DOM的XSS<ul>
+<li>修改页面DOM节点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>XSS Payload<ul>
+<li>XSS攻击成功后，攻击者能够对用户当前浏览的页面植入恶意脚本，通过恶意脚本，控制用户的浏览器。这些恶意脚本称为XSS Payload。</li>
+<li>Cookie劫持——举例</li>
+<li>构造GET/POST请求——举例</li>
+<li>XSS钓鱼——举例，如画出一个登录框，钓鱼密码等，结合XSS劫持整个账户</li>
+<li>伪造User Agent</li>
+<li>识别用户安装的插件</li>
+<li>CSS History Hack，利用a标签的visited属性，用户访问过的链接颜色与众不同——Firefox于2010修复</li>
+<li>获取用户真实IP</li>
+</ul>
+</li>
+<li>XSS 攻击平台，演示XSS，如Attack API、BeEF、XSS-Proxy</li>
+<li>XSS Worm<ul>
+<li>案例：MySpace.com；百度空间</li>
+</ul>
+</li>
+<li>XSS构造技巧<ul>
+<li>利用字符编码</li>
+<li>利用注释绕过长度限制</li>
+<li><code>location.hash</code></li>
+<li><code>&lt;base&gt;</code>标签</li>
+<li><code>window.name</code></li>
+<li></li>
+</ul>
+</li>
+<li>JS 框架暴露XSS漏洞</li>
+<li>XSS防御<ul>
+<li>Cookie 的 HttpOnly</li>
+<li>输入检查</li>
+<li>输出检查</li>
+<li>HTMLEncode与JavaScriptEncode  <span style="color:red">**</span></li>
+<li>EncodeForCSS()  <span style="color:red">**</span></li>
+<li>DOM XSS  <span style="color:red">** P106</span></li>
+</ul>
+</li>
+</ol>
+<h3 id="(3)_跨站点请求伪造(CSRF)">(3) 跨站点请求伪造(CSRF)</h3>
+<ol>
+<li>Cross Site Request Forgery，利用用户的身份操作用户账户</li>
+<li>Cookie</li>
+<li>P3P</li>
+<li>POST/GET</li>
+<li>Flash CSRF </li>
+<li>CSRF Worm</li>
+<li>CSRF防御——不可预测性原则<ul>
+<li>验证码</li>
+<li>Referer Check</li>
+<li>Token(注意XSRF)</li>
+</ul>
+</li>
+</ol>
+<h3 id="(4)_点击劫持(ClickJacking)">(4) 点击劫持(ClickJacking)</h3>
+<ol>
+<li>透明、不可见iframe，诱导用户点击;实施成本高</li>
+<li>图片覆盖攻击</li>
+<li>拖拽劫持？P133</li>
+<li>数据盗取</li>
+<li>防御<ul>
+<li>禁止iframe嵌套</li>
+<li>X-Frame-Options</li>
+</ul>
+</li>
+</ol>
+<h3 id="(5)_HTML_5_安全">(5) HTML 5 安全</h3>
+<ol>
+<li><code>&lt;video&gt;&lt;audio&gt;</code>标签</li>
+<li>iframe的sandbox</li>
+<li>noreferer</li>
+<li>Canvas</li>
+<li>同源策略限制跨域，用jsonp、iframe实现跨域；</li>
+<li>XDomainRequest</li>
+<li>postMessage</li>
+<li>Web Storage面临更多挑战</li>
+</ol>
+<h2 id="3-服务端应用安全">3.服务端应用安全</h2>
+<h3 id="(1)_注入攻击">(1) 注入攻击</h3>
+<h3 id="(2)_文件上传漏洞">(2) 文件上传漏洞</h3>
+<h3 id="(3)_认证与会话管理">(3) 认证与会话管理</h3>
+<h3 id="(4)_访问控制">(4) 访问控制</h3>
+<h3 id="(5)_加密算法与随机数">(5) 加密算法与随机数</h3>
+<h3 id="(6)_Web框架安全">(6) Web框架安全</h3>
+<h3 id="(7)_应用层拒绝服务攻击">(7) 应用层拒绝服务攻击</h3>
+<h3 id="(8)_PHP安全">(8) PHP安全</h3>
+<h3 id="(9)_Web_Server配置安全">(9) Web Server配置安全</h3>
+<h2 id="第12章_Web框架安全">第12章 Web框架安全</h2>
+]]></content>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="文章" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[《高性能JavaScript》读书笔记]]></title>
